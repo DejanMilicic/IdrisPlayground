@@ -1,17 +1,32 @@
-FROM ubuntu as base
+FROM ubuntu:22.04 as build
 
-ARG VERSION=v0.3.0
+RUN apt update
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt install -y racket
+RUN apt install -y git libgmp3-dev make gcc
+RUN git clone https://github.com/idris-lang/Idris2 /opt/idris2
 
-WORKDIR /src
-RUN apt-get update && apt-get -y install build-essential git clang chezscheme
-RUN git clone https://github.com/idris-lang/Idris2.git
-WORKDIR /src/Idris2
-RUN git checkout ${VERSION}
-ENV SCHEME=scheme
-RUN export PATH="${PATH}:/root/.idris2/bin" && make bootstrap && make install
+WORKDIR /opt/idris2
 
-FROM ubuntu
-COPY --from=base /root/.idris2 /root/.idris2
+ENV IDRIS2_CG=racket
+RUN make bootstrap-racket
+RUN make install
+
+
+
+
+FROM ubuntu:22.04
+WORKDIR /opt/idris2
+COPY --from=build /root/.idris2 /root/.idris2
+
+RUN ln -s /root/.idris2/bin/idris2 /bin/idris
+
+ENV PATH="/root/.idris2/bin:${PATH}"
+ENV LD_LIBRARY_PATH="/root/.idris2/lib:${LD_LIBRARY_PATH}"
+
+RUN apt-get update && \
+    apt-get install -y racket
+
 ENV SCHEME=scheme
 RUN apt-get update && apt-get -y install chezscheme
 RUN echo 'export PATH="/root/.idris2/bin/:${PATH}"' >> "${HOME}/.bashrc" && echo 'alias idris=idris2' >> "${HOME}/.bashrc"
