@@ -1,0 +1,8 @@
+{
+    "idris.executablePath": "/root/.idris2/bin/idris2",             // The full path to the idris executable.
+    //"idris.hoverMode": "fallback",               // Controls the hover behavior. 'info' will display Idris documentation, 'type' will display Idris type, 'fallback' will try 'info' first and fallback to 'type' if we can not get the documentation, and 'none' will disable hover tooltips.
+    //"idris.suggestMode": "allWords",             // Controls the auto-completion behavior. 'allWords' will always include all words from the currently opened documentation, 'replCompletion' will get suggestions from Idris REPL process.
+    //"idris.warnPartial": false,                  // Show warning when a function is partial.
+    "idris.showOutputWhenTypechecking": true,   //Show output channel when typechecking finished.
+    //"idris.numbersOfContinuousTypechecking": 10  //Kill Idris process every N times of continuous typechecking to avoid memory leaking.
+}
