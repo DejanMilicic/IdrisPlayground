@@ -1,5 +1,5 @@
 ||| Show length of the input string
-module Main
+module StrLen
 
 main : IO ()
 main = do
