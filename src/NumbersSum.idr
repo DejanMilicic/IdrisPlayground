@@ -1,5 +1,5 @@
 ||| Show sum of the numbers from input
-module Main
+module NumbersSum
 
 import Data.String
 
