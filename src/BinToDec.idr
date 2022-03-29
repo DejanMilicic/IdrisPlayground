@@ -1,3 +1,4 @@
+||| Convert binary string to an integer
 module BinToDec
 
 import Data.Nat.Exponentiation
