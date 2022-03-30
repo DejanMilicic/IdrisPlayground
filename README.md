@@ -10,3 +10,17 @@ https://github.com/jhvst/dockerfiles/tree/main/idris2
 
 How to use Idris2 in devcontainer  
 https://gist.github.com/YBogomolov/dc49c610cf7d92c60fb4678bae3ab753
+
+## Idris Language Extension Settings
+
+Idris Path: `/root/.idris2/bin/idris2`  
+
+## Paths
+
+Compiled execs: `./build/exec/` 
+
+## Compilation
+
+```
+idris --find-ipkg
+```
