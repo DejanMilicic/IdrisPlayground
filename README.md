@@ -24,3 +24,8 @@ Compiled execs: `./build/exec/`
 ```
 idris --find-ipkg
 ```
+
+## Tutorials
+
+https://www.azavea.com/blog/2019/03/11/the-power-of-types-in-idris/
+
